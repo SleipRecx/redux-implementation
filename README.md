@@ -2,6 +2,6 @@
 
 #### To Do
 - [x] createStore
-- [] combineReducers
-- [] applyMiddleware
-- [] Custom Middleware
+- [ ] combineReducers
+- [ ] applyMiddleware
+- [ ] Custom Middleware
