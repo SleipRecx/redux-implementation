@@ -11,8 +11,13 @@
  *
  */
 
-const createStore = (reducer, preloadedState) => {
+const createStore = (reducer, preloadedState, enhancer) => {
+  if (enhancer) {
+    return enhancer(createStore)(reducer, preloadedState);
+  }
+
   let currentState = preloadedState;
+  let currentReducer = reducer;
   const listeners = [];
 
   const getState = () => {
@@ -20,7 +25,7 @@ const createStore = (reducer, preloadedState) => {
   };
 
   const dispatch = action => {
-    currentState = reducer(currentState, action);
+    currentState = currentReducer(currentState, action);
     listeners.forEach(listener => listener());
     return action;
   };
@@ -33,8 +38,13 @@ const createStore = (reducer, preloadedState) => {
     return unsubscribe;
   };
 
+  const replaceReducer = nextReducer => {
+    currentReducer = nextReducer;
+    dispatch({ type: "redux/INIT" });
+  };
+
   dispatch({ type: "redux/INIT" });
-  return { getState, dispatch, subscribe };
+  return { getState, dispatch, subscribe, replaceReducer };
 };
 
 module.exports = createStore;
