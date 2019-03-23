@@ -1,4 +1,4 @@
-const countReducer = (state = 0, action) => {
+const counter = (state = 0, action) => {
   switch (action.type) {
     case "INCREMENT":
       return state + 1;
@@ -8,7 +8,7 @@ const countReducer = (state = 0, action) => {
   return state;
 };
 
-const todoReducer = (state = [], action) => {
+const todos = (state = [], action) => {
   switch (action.type) {
     case "ADD_TODO":
       return [
@@ -31,6 +31,6 @@ const todoReducer = (state = [], action) => {
 };
 
 module.exports = {
-  countReducer,
-  todoReducer
+  counter,
+  todos
 };

@@ -3,8 +3,8 @@ const createStore = require("./redux").createStore;
 const combineReducers = require("./redux").combineReducers;
 
 // Import reducers
-const countReducer = require("./reducers.js").countReducer;
-const todoReducer = require("./reducers.js").todoReducer;
+const counter = require("./reducers.js").counter;
+const todos = require("./reducers.js").todos;
 
 // import action creators
 const increment = require("./actionCreators").increment;
@@ -14,8 +14,8 @@ const toggleTodo = require("./actionCreators").toggleTodo;
 
 // Combine Reducers
 const rootReducer = combineReducers({
-  count: countReducer,
-  todos: todoReducer
+  counter,
+  todos
 });
 
 // Create store and subscribe to store
