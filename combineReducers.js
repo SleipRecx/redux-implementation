@@ -1,0 +1,10 @@
+const combineReducers = reducers => {
+    return (state = {}, action) => {
+      return Object.keys(reducers).reduce((result, key) => {
+        result[key] = reducers[key](state[key], action);
+        return result;
+      }, {});
+    };
+  };
+
+module.exports = combineReducers;
