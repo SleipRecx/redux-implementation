@@ -1,22 +1,16 @@
+// Import createStore and combineReducers from redux implementation
 const createStore = require("./redux").createStore;
 const combineReducers = require("./redux").combineReducers;
 
+// Import reducers
 const countReducer = require("./reducers.js").countReducer;
 const todoReducer = require("./reducers.js").todoReducer;
 
-// Counter actions
-const incrementAction = { type: "INCREMENT" };
-const decrementAction = { type: "DECREMENT" };
-
-// Todo actions
-const addTodoAction = {
-  type: "ADD_TODO",
-  payload: { text: "Clean apartment" }
-};
-const completeTodoAction = {
-  type: "TOGGLE_TODO",
-  payload: { index: 0 }
-};
+// import action creators
+const increment = require("./actionCreators").increment;
+const decrement = require("./actionCreators").decrement;
+const addTodo = require("./actionCreators").addTodo;
+const toggleTodo = require("./actionCreators").toggleTodo;
 
 // Combine Reducers
 const rootReducer = combineReducers({
@@ -26,14 +20,18 @@ const rootReducer = combineReducers({
 
 // Create store and subscribe to store
 const store = createStore(rootReducer, {});
-unsubscribe = store.subscribe(() => console.log(store.getState()));
+
+// Subscribe to store changes
+const logCurrentStateTree = () => console.log(store.getState());
+const unsubscribe = store.subscribe(logCurrentStateTree);
 
 // Dispatch actions
-store.dispatch(incrementAction);
-store.dispatch(incrementAction);
-store.dispatch(decrementAction);
-store.dispatch(addTodoAction);
-store.dispatch(completeTodoAction);
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(addTodo("Clean apartment"));
+const id = store.getState().todos[0].id;
+store.dispatch(toggleTodo(id));
+store.dispatch(toggleTodo(id));
 
-// Unsubscribe
+// Unsubscribe from store chngaes
 unsubscribe();
