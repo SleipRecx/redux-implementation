@@ -6,7 +6,7 @@
  *
  * @param {Object} preloadedState, The initial state
  *
- * @returns {Object} A Redux store that lets you read the state, dispatch actions
+ * @returns {Object} store, A Redux store that lets you read the state, dispatch actions
  * and subscribe to changes.
  *
  */
