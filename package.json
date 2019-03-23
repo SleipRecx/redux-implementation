@@ -32,5 +32,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "lint-staged": "^8.1.5"
   }
 }

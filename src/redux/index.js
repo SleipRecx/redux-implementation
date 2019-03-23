@@ -5,5 +5,5 @@ const compose = require("./compose.js");
 module.exports = {
   createStore,
   combineReducers,
-  compose,
+  compose
 };

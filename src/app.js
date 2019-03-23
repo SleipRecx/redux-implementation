@@ -13,9 +13,9 @@ const addTodoAction = {
   type: "ADD_TODO",
   payload: { text: "Clean apartment" }
 };
-const completeTodoAction = { 
-  type: "TOGGLE_TODO", 
-  payload: { index: 0 } 
+const completeTodoAction = {
+  type: "TOGGLE_TODO",
+  payload: { index: 0 }
 };
 
 // Combine Reducers
@@ -25,8 +25,7 @@ const rootReducer = combineReducers({
 });
 
 // Create store and subscribe to store
-const store = createStore(rootReducer, {})
-
+const store = createStore(rootReducer, {});
 unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 // Dispatch actions

@@ -12,31 +12,30 @@
  */
 
 const createStore = (reducer, preloadedState) => {
-    let currentState = preloadedState;
-    const listeners = [];
-  
-    const getState = () => {
-      return currentState;
-    };
-  
-    const dispatch = action => {
-      currentState = reducer(currentState, action);
-      listeners.forEach(listener => listener());
-      return action;
-    };
-  
-    const subscribe = listener => {
-      listeners.push(listener);
-      const unsubscribe = () => {
-        const index = listeners.indexOf(listener);
-        listeners.splice(index, 1);
-      };
-      return unsubscribe;
-    };
-  
-    dispatch({ type: "redux/INIT" });
-  
-    return { getState, dispatch, subscribe };
+  let currentState = preloadedState;
+  const listeners = [];
+
+  const getState = () => {
+    return currentState;
   };
-  
+
+  const dispatch = action => {
+    currentState = reducer(currentState, action);
+    listeners.forEach(listener => listener());
+    return action;
+  };
+
+  const subscribe = listener => {
+    listeners.push(listener);
+    const unsubscribe = () => {
+      const index = listeners.indexOf(listener);
+      listeners.splice(index, 1);
+    };
+    return unsubscribe;
+  };
+
+  dispatch({ type: "redux/INIT" });
+  return { getState, dispatch, subscribe };
+};
+
 module.exports = createStore;
