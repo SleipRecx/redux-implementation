@@ -1,6 +1,6 @@
 # Redux implementation for learning purposes.
 
-#### To Do
+#### To be implemented:
 - [x] createStore
 - [x] combineReducers
 - [] applyMiddleware
