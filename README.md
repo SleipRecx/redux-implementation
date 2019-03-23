@@ -4,4 +4,4 @@
 - [x] createStore
 - [x] combineReducers
 - [x] compose
-- [ ] applyMiddleware
+- [x] applyMiddleware
