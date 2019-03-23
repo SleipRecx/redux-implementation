@@ -1,6 +1,6 @@
 const isFSA = require("flux-standard-action").isFSA;
 
-const ensureFSA = () => next => action => {
+const ensureFSA = _ => next => action => {
   if (process.env.NODE_ENV !== "production") {
     if (!isFSA(action)) {
       throw new Error(
@@ -11,7 +11,4 @@ const ensureFSA = () => next => action => {
   }
   next(action);
 };
-
-export { ensureFSA };
-
 module.exports = ensureFSA;

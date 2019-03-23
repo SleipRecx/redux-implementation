@@ -24,7 +24,9 @@ const rootReducer = combineReducers({
 
 
 // Create store and apply middleware
+//const store = createStore(rootReducer);
 const store = applyMiddleware(ensureFSA)(createStore)(rootReducer);
+//console.log(store.dispatch.toString())
 
 // Subscribe to store changes
 const logCurrentStateTree = () => console.log(store.getState());
