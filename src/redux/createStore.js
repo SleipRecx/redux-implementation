@@ -28,8 +28,7 @@ const createStore = (reducer, preloadedState) => {
   const subscribe = listener => {
     listeners.push(listener);
     const unsubscribe = () => {
-      const index = listeners.indexOf(listener);
-      listeners.splice(index, 1);
+      listners = listeners.filter(l => l !== listener);
     };
     return unsubscribe;
   };
